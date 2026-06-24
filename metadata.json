@@ -1,0 +1,6 @@
+{
+  "name": "The Tiebreaker",
+  "description": "A smart decision-making assistant that helps you weigh pros and cons, perform SWOT analysis, and compare options using Gemini AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
