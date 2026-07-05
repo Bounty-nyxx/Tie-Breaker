@@ -4,9 +4,41 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", sans-serif;
+  
+  --color-brand-navy: #0A192F;
+  --color-brand-navy-light: #112240;
+  --color-brand-navy-lighter: #233554;
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-light: #F5D061;
+  --color-brand-gold-dark: #AA8B2C;
 }
 
 body {
-  @apply antialiased;
+  @apply antialiased bg-gray-50 text-brand-navy dark:bg-brand-navy dark:text-gray-100 transition-colors duration-300;
 }
+
+.dark .bg-white {
+  @apply bg-brand-navy-light;
+}
+
+.dark .text-gray-900 {
+  @apply text-white;
+}
+
+.dark .text-gray-500 {
+  @apply text-gray-300;
+}
+
+.dark .border-gray-200 {
+  @apply border-brand-navy-lighter;
+}
+
+.dark .border-gray-100 {
+  @apply border-brand-navy-light;
+}
+
+.dark .bg-gray-50 {
+  @apply bg-brand-navy-lighter;
+}
+
 
