@@ -60,14 +60,33 @@ export default function App() {
     try {
       const canvas = await html2canvas(resultRef.current, {
         scale: 2,
-        backgroundColor: theme === 'dark' ? '#0A192F' : '#ffffff'
+        backgroundColor: theme === 'dark' ? '#0A192F' : '#ffffff',
+        onclone: (clonedDoc) => {
+          const header = clonedDoc.querySelector('.print-header') as HTMLElement;
+          if (header) {
+            header.style.display = 'block';
+          }
+        }
       });
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
       
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      let heightLeft = pdfHeight;
+      let position = 0;
+
+      pdf.addImage(imgData, "PNG", 0, position, pdfWidth, pdfHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft >= 0) {
+        position = heightLeft - pdfHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, position, pdfWidth, pdfHeight);
+        heightLeft -= pageHeight;
+      }
+      
       pdf.save("tie-breaker-analysis.pdf");
     } catch (err) {
       console.error("PDF Export failed", err);
@@ -150,7 +169,7 @@ export default function App() {
                     value={decision}
                     onChange={(e) => setDecision(e.target.value)}
                     placeholder="E.g., Should I launch my startup now or wait 6 months?"
-                    className="w-full min-h-[120px] p-6 text-xl bg-gray-50/50 dark:bg-brand-navy-lighter/50 rounded-2xl border border-gray-200 dark:border-brand-navy-lighter focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none transition-all resize-none placeholder:text-gray-400 dark:placeholder:text-gray-500 text-brand-navy dark:text-white"
+                    className="w-full min-h-[120px] p-6 text-xl bg-gray-50 dark:bg-brand-navy-lighter rounded-2xl border border-gray-200 dark:border-brand-navy-lighter focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none transition-all resize-none placeholder:text-gray-400 dark:placeholder:text-gray-500 text-brand-navy dark:text-white"
                   />
                 </div>
 

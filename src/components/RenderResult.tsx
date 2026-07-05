@@ -11,7 +11,7 @@ export function RenderResult({ result, mode }: { result: any, mode: string }) {
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-green-50/50 dark:bg-green-900/10 p-6 rounded-2xl border border-green-100 dark:border-green-900/30"
+            className="bg-green-50 dark:bg-green-900 p-6 rounded-2xl border border-green-100 dark:border-green-800"
           >
             <div className="flex items-center gap-2 text-green-700 dark:text-green-400 font-semibold mb-4">
               <CheckCircle2 size={20} />
@@ -29,7 +29,7 @@ export function RenderResult({ result, mode }: { result: any, mode: string }) {
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-red-50/50 dark:bg-red-900/10 p-6 rounded-2xl border border-red-100 dark:border-red-900/30"
+            className="bg-red-50 dark:bg-red-900 p-6 rounded-2xl border border-red-100 dark:border-red-800"
           >
             <div className="flex items-center gap-2 text-red-700 dark:text-red-400 font-semibold mb-4">
               <XCircle size={20} />
@@ -48,7 +48,7 @@ export function RenderResult({ result, mode }: { result: any, mode: string }) {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="col-span-1 md:col-span-2 bg-brand-gold/10 p-6 rounded-2xl border border-brand-gold/20"
+              className="col-span-1 md:col-span-2 bg-yellow-50 dark:bg-brand-navy-lighter p-6 rounded-2xl border border-yellow-100 dark:border-brand-navy-light"
             >
               <div className="flex items-center gap-2 text-brand-gold-dark dark:text-brand-gold font-semibold mb-2">
                 <Info size={20} />
@@ -64,10 +64,10 @@ export function RenderResult({ result, mode }: { result: any, mode: string }) {
       return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
-            { title: "Strengths", items: result.strengths, icon: <CheckCircle2 className="text-green-600 dark:text-green-400" />, bg: "bg-green-50 dark:bg-green-900/10", border: "border-green-100 dark:border-green-900/30" },
-            { title: "Weaknesses", items: result.weaknesses, icon: <AlertTriangle className="text-orange-600 dark:text-orange-400" />, bg: "bg-orange-50 dark:bg-orange-900/10", border: "border-orange-100 dark:border-orange-900/30" },
-            { title: "Opportunities", items: result.opportunities, icon: <TrendingUp className="text-blue-600 dark:text-blue-400" />, bg: "bg-blue-50 dark:bg-blue-900/10", border: "border-blue-100 dark:border-blue-900/30" },
-            { title: "Threats", items: result.threats, icon: <XCircle className="text-red-600 dark:text-red-400" />, bg: "bg-red-50 dark:bg-red-900/10", border: "border-red-100 dark:border-red-900/30" }
+            { title: "Strengths", items: result.strengths, icon: <CheckCircle2 className="text-green-600 dark:text-green-400" />, bg: "bg-green-50 dark:bg-green-900", border: "border-green-100 dark:border-green-800" },
+            { title: "Weaknesses", items: result.weaknesses, icon: <AlertTriangle className="text-orange-600 dark:text-orange-400" />, bg: "bg-orange-50 dark:bg-orange-900", border: "border-orange-100 dark:border-orange-800" },
+            { title: "Opportunities", items: result.opportunities, icon: <TrendingUp className="text-blue-600 dark:text-blue-400" />, bg: "bg-blue-50 dark:bg-blue-900", border: "border-blue-100 dark:border-blue-800" },
+            { title: "Threats", items: result.threats, icon: <XCircle className="text-red-600 dark:text-red-400" />, bg: "bg-red-50 dark:bg-red-900", border: "border-red-100 dark:border-red-800" }
           ].map((section, i) => (
             <motion.div 
               key={section.title}
@@ -108,7 +108,7 @@ export function RenderResult({ result, mode }: { result: any, mode: string }) {
             </thead>
             <tbody>
               {result.rows?.map((row: string[], i: number) => (
-                <tr key={i} className="border-b dark:border-brand-navy-lighter last:border-b-0 hover:bg-gray-50/50 dark:hover:bg-brand-navy-lighter/50 transition-colors">
+                <tr key={i} className="border-b dark:border-brand-navy-lighter last:border-b-0 hover:bg-gray-50 dark:hover:bg-brand-navy-lighter transition-colors">
                   {row.map((cell, j) => (
                     <td key={j} className="p-4 text-sm text-gray-700 dark:text-gray-300 border-r dark:border-brand-navy-lighter last:border-r-0">
                       {cell}
@@ -133,7 +133,7 @@ export function RenderResult({ result, mode }: { result: any, mode: string }) {
               className="bg-white dark:bg-brand-navy-light p-6 rounded-2xl border border-gray-200 dark:border-brand-navy-lighter shadow-sm hover:shadow-md transition-shadow group"
             >
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold-dark dark:text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-yellow-50 dark:bg-brand-navy-lighter flex items-center justify-center text-brand-gold-dark dark:text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-colors">
                   <Lightbulb size={20} />
                 </div>
                 <div>
